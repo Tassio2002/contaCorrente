@@ -6,15 +6,10 @@ package interfaceGrafica;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author tassi
- */
 public class PrimeiraTela extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PrimeiraTela
-     */
+    ContaCorrente cc = new ContaCorrente(0.0);
+
     public PrimeiraTela() {
         initComponents();
     }
@@ -194,21 +189,13 @@ public class PrimeiraTela extends javax.swing.JFrame {
 
     private void btnDepositarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDepositarMouseClicked
         JOptionPane.showMessageDialog(rootPane, "Valor depositado com sucesso!");
-        String saldoValorText = this.saldoValor.getText();
-        double saldoValor = Double.parseDouble(saldoValorText);
-        double inputDepositarText = Double.parseDouble(this.inputDepositar.getText());
-        double modificaSaldo = inputDepositarText += saldoValor;
-        this.saldoValor.setText(String.valueOf(modificaSaldo));
+        this.saldoValor.setText(String.valueOf(cc.modificarSaldoDeposito(this.saldoValor.getText(), this.inputDepositar.getText(), ICONIFIED)));
         this.inputDepositar.setText("");
     }//GEN-LAST:event_btnDepositarMouseClicked
 
     private void btnSacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSacarMouseClicked
         JOptionPane.showMessageDialog(rootPane, "Valor sacado com sucesso!");
-        String saldoValorText = this.saldoValor.getText();
-        double saldoValor = Double.parseDouble(saldoValorText);
-        double inputSacarText = Double.parseDouble(this.inputSacar.getText());
-        double modificaSaldo = saldoValor -= inputSacarText;
-        this.saldoValor.setText(String.valueOf(modificaSaldo));
+        this.saldoValor.setText(String.valueOf(cc.modificarSaldoSaque(this.saldoValor.getText(), this.inputSacar.getText(), ICONIFIED)));
         this.inputSacar.setText("");
     }//GEN-LAST:event_btnSacarMouseClicked
 
